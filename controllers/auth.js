@@ -37,10 +37,14 @@ export const register = async (req, res) => {
     });
 
     return res
-      .cookie('access_token', accessToken, { httpOnly: true })
+      .cookie('access_token', accessToken, {
+        httpOnly: true, //accessible only by web server
+        secure: true, //https
+        sameSite: 'None', // cookie will be sent from client on different domain
+      })
       .status(200)
       .json({
-        user: {name: newUser.name, email: newUser.email},
+        user: { name: newUser.name, email: newUser.email },
         message: `User ${newUser.name} successfully registered`,
       });
   } catch (err) {
@@ -90,7 +94,11 @@ export const login = async (req, res, next) => {
 
     // 5.3 sent access token in cookie and info about user  on the client
     return res
-      .cookie('access_token', accessToken, { httpOnly: true })
+      .cookie('access_token', accessToken, {
+        httpOnly: true, //accessible only by web server
+        secure: true, //https
+        sameSite: 'None', // cookie will be sent from client on different domain
+      })
       .status(200)
       .json({
         user: { name: foundUser.name, email: foundUser.email },
