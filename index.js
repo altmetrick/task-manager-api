@@ -20,7 +20,7 @@ import allRoutes from './routes/index.js';
 const app = express();
 const port = process.env.PORT || 5000;
 
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = ['http://localhost:5173', 'https://task-manager-daqz.onrender.com'];
 
 const corsOptions = {
   origin: (origin, callback) => {
