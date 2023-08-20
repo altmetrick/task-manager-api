@@ -23,7 +23,7 @@ export const createTask = async (req, res, next) => {
       title,
       body,
     });
-    return res.status(201).json({ task: newTask, message: 'New task creted!'} );
+    return res.status(201).json({ task: newTask, message: 'New task was created!' });
   } catch (err) {
     return next(err);
   }

@@ -1,5 +1,8 @@
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 import 'dotenv/config';
-import * as url from 'url';
 
 import express from 'express';
 import cors from 'cors';
@@ -12,7 +15,7 @@ import allRoutes from './routes/index.js';
 
 //
 // const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+//const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const app = express();
 const port = process.env.PORT || 5000;
